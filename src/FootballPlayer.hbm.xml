@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 16, 2018 2:43:15 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.waramun.FootballPlayer" table="footballplayer" catalog="waramundb">
+        <id name="playerId" type="java.lang.Integer">
+            <column name="PLAYER_ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="country" class="com.waramun.Country" fetch="select">
+        	<column name="COUNTRY_ID" not-null="true"></column>
+        </many-to-one>
+        <property name="playerFname" type="java.lang.String">
+            <column name="PLAYER_FNAME" />
+        </property>
+        <property name="playerLname" type="java.lang.String">
+            <column name="PLAYER_LNAME" />
+        </property>
+        <property name="playerBirthdate" type="date">
+            <column name="PLAYER_BIRTHDATE" length="10"/>
+        </property>
+    </class>
+</hibernate-mapping>

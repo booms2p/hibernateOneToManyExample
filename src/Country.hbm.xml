@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 16, 2018 2:43:15 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.waramun.Country" table="country" catalog="waramundb">
+        <id name="countryId" type="java.lang.Integer">
+            <column name="COUNTRY_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="countryName" type="string">
+            <column name="COUNTRY_NAME" not-null="true" unique="true" />
+        </property>
+        <set name="footballPlayer" table="footballplayer" inverse="true" lazy="true" fetch="select">
+        	<key>
+        		<column name="COUNTRY_ID" not-null="true"></column>
+        	</key>
+        	<one-to-many class="com.waramun.FootballPlayer" />
+        </set>
+    </class>
+</hibernate-mapping>
